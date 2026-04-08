@@ -2,12 +2,17 @@ const nodemailer = require('nodemailer');
 
 const sendCertificate = async (recipientEmail, recipientName, pdfBuffer) => {
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.user,
-            pass: process.env.pass 
-        }
-    });
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+        user: process.env.user,
+        pass: process.env.pass
+    },
+    tls: {
+        family: 4
+    }
+});
 
     const mailOptions = {
         from: `"CertiGen System" <${process.env.user}>`,
