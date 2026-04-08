@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
-
+console.log("EMAIL:", process.env.user);
+console.log("PASSWORD:", process.env.pass ? "SET" : "NOT SET");
 const sendCertificate = async (recipientEmail, recipientName, pdfBuffer) => {
     const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
