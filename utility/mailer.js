@@ -6,13 +6,13 @@ const sendCertificate = async (recipientEmail, recipientName, pdfBuffer) => {
     host: "smtp.gmail.com",
     port: 587,
     secure: false,
+    requireTLS: true,
+    logger: true,
+    debug: true,
     auth: {
         user: process.env.user,
         pass: process.env.pass
     },
-    tls: {
-        family: 4
-    }
 });
 
     const mailOptions = {
