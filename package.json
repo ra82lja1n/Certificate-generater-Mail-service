@@ -1,0 +1,31 @@
+{
+  "name": "certificate_generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "convert-excel-to-json": "^1.7.0",
+    "dotenv": "^17.4.1",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "html-pdf-node": "^1.0.8",
+    "html-to-pdf": "^0.1.11",
+    "mongoose": "^9.2.2",
+    "multer": "^2.0.2",
+    "nodemailer": "^8.0.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

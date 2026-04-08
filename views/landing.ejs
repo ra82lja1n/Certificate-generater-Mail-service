@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CertificateHeist</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <section class="hero">
+        <h1>Welcome to <span>CertificateHeist</span></h1>
+        <button id="exploreBtn" onclick="document.getElementById('templates').scrollIntoView({behavior: 'smooth'})">Explore</button>
+    </section>
+
+    <section class="templates" id="templates">
+        <h2>Select Certificate Template</h2>
+        <br><br>
+        <div class="grid">
+            <div class="card" onclick="openPopup('t1')">
+                <div class="certificate cert-one small">
+                    <div class="shape-top"></div>
+                    <div class="shape-bottom"></div>
+
+                    <div class="seal-container">
+                        <div class="ribbon-left"></div>
+                        <div class="ribbon-right"></div>
+                        <div class="medal"></div>
+                    </div>
+
+                    <div class="cert-content">
+                        <h1 class="title-script">Certificate</h1>
+                        <h3 class="subtitle">Of Appreciation</h3>
+                        <div class="divider"></div>
+                        <p class="present-text">This Certificate is proudly presented to:</p>
+                        <h2 class="name-display">Your Name Here</h2>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                        <div class="cert-footer">
+                            <div class="sig-block">DATE</div>
+                            <div class="sig-block">SIGNATURE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="openPopup('t2')">
+                <div class="certificate cert-two small">
+                    <div class="swoosh swoosh-top"></div>
+                    <div class="swoosh swoosh-bottom"></div>
+                    <div class="gold-frame"></div>
+
+                    <div class="best-award-medal">
+                        <div class="medal-inner">BEST<span>AWARD</span></div>
+                    </div>
+
+                    <div class="cert-content">
+                        <h1 class="title-serif">Certificate</h1>
+                        <h4 class="of-appreciation">OF APPRECIATION</h4>
+                        <p class="proudly">PROUDLY PRESENTED TO</p>
+                        <h2 class="name-script">Name Surname</h2>
+                        <div class="ornament-line"></div>
+                        <p class="description-small">LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat ut wisi.</p>
+
+                        <div class="cert-footer">
+                            <div class="sig-block">DATE</div>
+                            <div class="sig-block">SIGNATURE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="openPopup('t3')">
+                <div class="certificate cert-three small">
+                    <div class="bg-layer"></div>
+                    <div class="stripe stripe-1"></div>
+                    <div class="stripe stripe-2"></div>
+                    <div class="stripe stripe-3"></div>
+                    <div class="stripe stripe-4"></div>
+
+                    <div class="best-award-badge">
+                        <div class="badge-inner">
+                            <span class="stars">★★★</span>
+                            <span class="text">BEST<br>AWARD</span>
+                            <span class="stars">★★★</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-content">
+                        <div class="header-group">
+                            <h1 class="main-title">CERTIFICATE</h1>
+                            <h3 class="sub-title">OF APPRECIATION</h3>
+                        </div>
+                        <p class="present-label">THIS CERTIFICATE AS PROUDLY PRESENTED TO</p>
+                        <h2 class="name-gold">Name Surname</h2>
+                        <div class="line-divider"></div>
+                        <h4 class="lorem-heading">LOREM IPSUM DOLOR SIT AMET</h4>
+                        <p class="description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                        <div class="footer-signatures">
+                            <div class="sig-line">DATE</div>
+                            <div class="sig-line">SIGNATURE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="openPopup('t4')">
+                <div class="certificate cert-four small">
+                    <div class="wave-top purple-wave"></div>
+                    <div class="wave-top orange-wave"></div>
+                    <div class="header-bar">
+                        <h1>CERTIFICATE</h1>
+                        <div class="subtitle-badge">OF APPRECIATION</div>
+                    </div>
+                    <div class="wave-bottom purple-wave-bg"></div>
+                    <div class="wave-bottom orange-wave-front"></div>
+                    <div class="luxury-badge">
+                        <div class="badge-content">
+                            <div class="stars">★★★</div>
+                            <div class="text">BEST<br>AWARD</div>
+                            <div class="stars">★★★</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-content">
+                        <p class="proud-label">PROUDLY PRESENTED TO</p>
+                        <h2 class="name-elegant">Name Surname</h2>
+                        <div class="orange-divider"></div>
+                        <p class="desc-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                        <div class="footer-sigs">
+                            <div class="sig-item">DATE</div>
+                            <div class="sig-item">SIGNATURE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="popup" id="popup" onclick="closePopup()">
+        <div class="popup-content" id="popupContent" onclick="event.stopPropagation()">
+            </div>
+
+        <button id="selectBtn" class="select-popup-btn" onclick="selectTemplate(event)">
+            Select Template
+        </button>
+    </div>
+
+    <footer>
+        <p>© 2026 CertificateHeist</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

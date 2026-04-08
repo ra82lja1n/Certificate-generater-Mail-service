@@ -1,0 +1,752 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #000, #222);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 span {
+    color: #00bfff;
+}
+
+.hero button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* TEMPLATE SECTION */
+.templates {
+    padding: 80px 10%;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* CARD */
+.card {
+    height: 220px;
+    background: #111;
+    padding: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* COMMON CERTIFICATE */
+.certificate {
+    height: 100%;
+    padding: 15px;
+    border-radius: 6px;
+    transform-origin: center;
+}
+
+/* ... Your existing CSS base ... */
+
+.small {
+    transform: scale(0.85);
+    transform-origin: center;
+    pointer-events: none; /* Prevents interaction inside the mini-preview */
+}
+
+/* Design 1: Classic (White/Gold) */
+.cert-one {
+    background: #fff;
+    border: 15px double #d4af37;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Design 2: Modern (Blue Gradient) */
+.cert-two { 
+    background: linear-gradient(135deg, #000428, #004e92);
+    color: white;
+    border-left: 20px solid #00d2ff;
+}
+
+/* Design 3: Corporate (Clean Grey) */
+.cert-three {
+    background: #f8f9fa;
+    border: 2px solid #333;
+    border-top: 15px solid #333;
+    color: #222;
+}
+
+/* Design 4: Luxury (Dark/Black) */
+.cert-four {
+    background: #1a1a1a;
+    border: 5px solid #444;
+    color: #e0e0e0;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+}
+
+/* Popup Display Logic */
+.popup.active {
+    display: flex;
+}
+
+/* POPUP */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    width: 70%;
+    height: 70%;
+    background: white;
+    animation: zoom 0.4s ease;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Content Layout */
+.cert-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.name {
+    font-size: 2.5rem;
+    margin: 10px 0;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Specific Styles */
+
+/* Certificate One */
+
+
+/* Container Base */
+.cert-one {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+    color: #1a2b48;
+}
+
+/* Top-Left Geometric Shapes */
+.shape-top {
+    position: absolute;
+    top: 0; left: 0;
+    width: 200px; height: 150px;
+    background: #1a2b48;
+    clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+    z-index: 1;
+}
+.shape-top::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 110%; height: 100%;
+    background: #d4af37;
+    clip-path: polygon(75% 0, 85% 0, 55% 100%, 45% 100%);
+}
+
+/* Bottom-Right Geometric Shapes */
+.shape-bottom {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 250px; height: 120px;
+    background: #1a2b48;
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* Gold Seal / Medal */
+.seal-container {
+    position: absolute;
+    top: 40px; right: 60px;
+    width: 100px; height: 100px;
+    z-index: 2;
+}
+.medal {
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, #f9df7b 20%, #d4af37 100%);
+    border-radius: 50%;
+    border: 5px dashed #1a2b48;
+    box-shadow: 0 0 0 8px #1a2b48;
+}
+.ribbon-left, .ribbon-right {
+    position: absolute;
+    bottom: -20px;
+    width: 30px; height: 50px;
+    background: #1a2b48;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+}
+.ribbon-left { left: 10px; transform: rotate(15deg); }
+.ribbon-right { right: 10px; transform: rotate(-15deg); }
+
+/* Typography */
+.title-script {
+    font-family: 'Cursive', cursive;
+    font-size: 50px;
+    margin: 0;
+    color: #1a2b48;
+}
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: -10px;
+}
+.divider {
+    width: 200px;
+    height: 2px;
+    background: #ccc;
+    margin: 15px auto;
+}
+.name-display {
+    font-size: 40px;
+    border-bottom: 2px solid #1a2b48;
+    display: inline-block;
+    padding: 0 30px;
+    margin: 10px 0;
+}
+.cert-footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    width: 80%;
+}
+.sig-block {
+    border-top: 1px solid #1a2b48;
+    width: 150px;
+    padding-top: 5px;
+}
+
+
+/* Container 2 Base */
+.cert-two {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    color: #333;
+    font-family: 'Georgia', serif;
+}
+
+/* The Swoosh Effects */
+.swoosh {
+    position: absolute;
+    width: 140%;
+    height: 100%;
+    z-index: 1;
+}
+
+.swoosh-top {
+    top: -50%;
+    right: -20%;
+    background: radial-gradient(circle at bottom left, #d4af37 0%, #0d4d4d 40%, #052626 100%);
+    clip-path: ellipse(60% 40% at 70% 30%);
+}
+
+.swoosh-bottom {
+    bottom: -50%;
+    left: -20%;
+    background: radial-gradient(circle at top right, #d4af37 0%, #0d4d4d 40%, #052626 100%);
+    clip-path: ellipse(60% 40% at 30% 70%);
+}
+
+/* Gold Frame with Squares */
+.gold-frame {
+    position: absolute;
+    inset: 20px;
+    border: 2px solid #d4af37;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.gold-frame::before, .gold-frame::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d4af37;
+}
+.gold-frame::before { top: -10px; left: -10px; } /* Corner Square top-left */
+.gold-frame::after { bottom: -10px; right: -10px; } /* Corner Square bottom-right */
+
+/* Award Seal */
+.best-award-medal {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    width: 85px;
+    height: 85px;
+    background: linear-gradient(145deg, #0d4d4d, #d4af37, #0d4d4d);
+    border-radius: 50%;
+    padding: 5px;
+    z-index: 3;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.medal-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #0d4d4d;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Text Styles */
+.title-serif {
+    font-size: 60px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.of-appreciation {
+    letter-spacing: 5px;
+    font-size: 14px;
+    color: #d4af37;
+    margin-top: -10px;
+}
+
+.proudly {
+    font-size: 12px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.name-script {
+    font-family: 'Cursive', cursive;
+    font-size: 45px;
+    font-style: italic;
+    margin: 5px 0;
+}
+
+.ornament-line {
+    width: 60%;
+    height: 1px;
+    background: #d4af37;
+    margin: 10px auto;
+    position: relative;
+}
+
+.ornament-line::before, .ornament-line::after {
+    content: '●';
+    color: #d4af37;
+    position: absolute;
+    top: -6px;
+}
+.ornament-line::before { left: -5px; }
+.ornament-line::after { right: -5px; }
+
+.description-small {
+    font-size: 11px;
+    max-width: 70%;
+    line-height: 1.6;
+    margin: 15px auto;
+}
+
+
+
+/* Container 3 Base */
+.cert-three {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    color: #4a5568;
+    font-family: 'Segoe UI', sans-serif;
+    z-index: 1;
+}
+
+/* Background Layers & Stripes */
+.bg-layer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    clip-path: polygon(0 0, 45% 0, 25% 100%, 0% 100%);
+    z-index: -1;
+}
+
+.stripe {
+    position: absolute;
+    height: 150%;
+    width: 40px;
+    z-index: -1;
+    transform: rotate(25deg);
+}
+
+.stripe-1 { background: #d4af37; left: 20%; top: -20%; width: 15px; }
+.stripe-2 { background: rgba(255,255,255,0.1); left: 10%; top: -25%; width: 60px; }
+.stripe-3 { background: #d4af37; right: 5%; top: -10%; width: 10px; }
+.stripe-4 { 
+    background: #2d3748; 
+    right: -10%; 
+    top: -20%; 
+    width: 150px; 
+    transform: rotate(45deg); 
+}
+
+/* Gold Badge */
+.best-award-badge {
+    position: absolute;
+    top: 30px;
+    left: 40%;
+    width: 80px;
+    height: 80px;
+    background: #d4af37;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.badge-inner {
+    color: #fff;
+    font-size: 8px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* Content Layout */
+.cert-three .cert-content {
+    padding-left: 35%; /* Push text away from the left blue section */
+    text-align: left;
+}
+
+.main-title {
+    font-size: 45px;
+    color: #4a5568;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.sub-title {
+    color: #d4af37;
+    letter-spacing: 4px;
+    margin-top: -5px;
+}
+
+.name-gold {
+    font-family: 'Cursive', cursive;
+    color: #d4af37;
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.line-divider {
+    width: 100%;
+    height: 1px;
+    background: #cbd5e0;
+    margin-bottom: 20px;
+}
+
+.lorem-heading {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.description-text {
+    font-size: 10px;
+    line-height: 1.8;
+    max-width: 90%;
+}
+
+.footer-signatures {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.sig-line {
+    border-top: 1px solid #4a5568;
+    width: 120px;
+    font-size: 10px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+/* THE POPUP OVERLAY */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85); /* Slightly darker for better focus */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Higher than EVERYTHING else on the page */
+}
+
+/* THE POPUP CONTENT BOX */
+.popup-content {
+    width: 80%;
+    max-width: 950px;
+    height: 600px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    z-index: 10000; /* Ensures content is above the overlay */
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* THE MINI PREVIEW (Ensure it stays in its card) */
+.card {
+    position: relative;
+    z-index: 1; /* Lower than popup */
+}
+
+
+/* Container 4 Base */
+.cert-four {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    z-index: 1;
+}
+
+
+
+/* TOP WAVES */
+.wave-top {
+    position: absolute;
+    top: 0; width: 100%; height: 180px;
+    z-index: -1;
+}
+.purple-wave {
+    background: #1e0b50;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 80% 90%, 50% 70%, 20% 90%, 0 70%);
+}
+.orange-wave {
+    background: linear-gradient(to bottom, #ff9100, #ff6d00);
+    height: 140px;
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 85% 100%, 50% 80%, 15% 100%, 0 60%);
+    opacity: 0.9;
+}
+
+/* HEADER BAR */
+.header-bar {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+.header-bar h1 { font-size: 40px; margin: 0; letter-spacing: 3px; }
+.subtitle-badge {
+    background: #ff9100;
+    display: inline-block;
+    padding: 5px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* BOTTOM WAVES */
+.wave-bottom {
+    position: absolute;
+    bottom: 0; width: 100%; height: 120px;
+    z-index: -1;
+}
+.purple-wave-bg {
+    background: #1e0b50;
+    clip-path: ellipse(80% 100% at 50% 100%);
+}
+.orange-wave-front {
+    background: linear-gradient(45deg, #ff9100, #ffb300);
+    height: 80px;
+    clip-path: ellipse(70% 100% at 50% 100%);
+}
+
+/* LUXURY BADGE */
+.luxury-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 90px;
+    background: #ff9100;
+    border: 4px solid #1e0b50;
+    border-radius: 20px; /* Squircle shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+.badge-content { color: white; text-align: center; font-size: 10px; font-weight: bold; }
+
+/* CONTENT STYLES */
+.cert-four .cert-content {
+    margin-top: 18px; /* Leave space for top waves */
+    padding: 20px;
+}
+.name-elegant {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 45px;
+    margin: 10px 0;
+    color: #1e0b50;
+}
+.orange-divider {
+    width: 60%;
+    height: 2px;
+    background: #ff9100;
+    margin: 0 auto 20px;
+}
+.desc-text {
+    font-size: 11px;
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+.footer-sigs {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+.sig-item {
+    border-top: 1px solid #333;
+    width: 150px;
+    font-size: 12px;
+    padding-top: 5px;
+    margin-left: 40px;
+}
+
+
+/* Handling the 'Small' state */
+.small .cert-content {
+    /* Text scales with the transform */
+}
+
+
+/* Button */
+
+.select-popup-btn {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    padding: 15px 40px;
+    background: #ff9100;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10005;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s ease;
+}
+
+.popup.active .select-popup-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.select-popup-btn:hover {
+    background: #e68200;
+    transform: scale(1.05);
+}
+
+
+
+/* Signature Styling */
+.sig-block, .sig-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sig-line, .line {
+    border-top: 1px solid #333;
+    width: 150px;
+    margin: 5px 0;
+}
+
+.signature-text {
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    min-height: 20px;
+}
+
+.label-text {
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+}
+
+.small .signature-text {
+    font-size: 14px;
+}
+
+.small .label-text {
+    font-size: 9px;
+}
+
+
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: #ccc;
+    text-align: center;
+    padding: 25px;
+}
+
+
+

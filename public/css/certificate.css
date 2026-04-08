@@ -1,0 +1,512 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    width: 1000px;
+    height: 700px;
+    overflow: hidden;
+}
+
+body {
+    background: white;
+    padding: 0;
+    margin: 0;
+    width: 1000px;
+    height: 700px;
+    overflow: hidden;
+}
+
+#certPreview {
+    width: 1000px;
+    height: 700px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.certificate {
+    width: 1000px;
+    height: 700px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Certificate One */
+.cert-one {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+    color: #1a2b48;
+}
+
+.shape-top {
+    position: absolute;
+    top: 0; left: 0;
+    width: 200px; height: 150px;
+    background: #1a2b48;
+    clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+    z-index: 1;
+}
+.shape-top::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 110%; height: 100%;
+    background: #d4af37;
+    clip-path: polygon(75% 0, 85% 0, 55% 100%, 45% 100%);
+}
+
+.shape-bottom {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 250px; height: 120px;
+    background: #1a2b48;
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.seal-container {
+    position: absolute;
+    top: 40px; right: 60px;
+    width: 100px; height: 100px;
+    z-index: 2;
+}
+
+.medal {
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, #f9df7b 20%, #d4af37 100%);
+    border-radius: 50%;
+    border: 5px dashed #1a2b48;
+    box-shadow: 0 0 0 8px #1a2b48;
+}
+
+.ribbon-left, .ribbon-right {
+    position: absolute;
+    bottom: -20px;
+    width: 30px; height: 50px;
+    background: #1a2b48;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+}
+.ribbon-left { left: 10px; transform: rotate(15deg); }
+.ribbon-right { right: 10px; transform: rotate(-15deg); }
+
+.title-script {
+    font-family: 'Cursive', cursive;
+    font-size: 50px;
+    margin: 0;
+    color: #1a2b48;
+}
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: -10px;
+}
+.divider {
+    width: 200px;
+    height: 2px;
+    background: #ccc;
+    margin: 15px auto;
+}
+.name-display {
+    font-size: 40px;
+    border-bottom: 2px solid #1a2b48;
+    display: inline-block;
+    padding: 0 30px;
+    margin: 10px 0;
+}
+.cert-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 40px;
+    width: 100%;
+}
+.sig-block {
+    border-top: 1px solid #1a2b48;
+    width: 150px;
+    padding-top: 5px;
+}
+
+/* Certificate Two */
+.cert-two {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    color: #333;
+    font-family: 'Georgia', serif;
+}
+
+.swoosh {
+    position: absolute;
+    width: 140%;
+    height: 100%;
+    z-index: 1;
+}
+
+.swoosh-top {
+    top: -50%;
+    right: -20%;
+    background: radial-gradient(circle at bottom left, #d4af37 0%, #0d4d4d 40%, #052626 100%);
+    clip-path: ellipse(60% 40% at 70% 30%);
+}
+
+.swoosh-bottom {
+    bottom: -50%;
+    left: -20%;
+    background: radial-gradient(circle at top right, #d4af37 0%, #0d4d4d 40%, #052626 100%);
+    clip-path: ellipse(60% 40% at 30% 70%);
+}
+
+.gold-frame {
+    position: absolute;
+    inset: 20px;
+    border: 2px solid #d4af37;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.gold-frame::before, .gold-frame::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d4af37;
+}
+.gold-frame::before { top: -10px; left: -10px; }
+.gold-frame::after { bottom: -10px; right: -10px; }
+
+.best-award-medal {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    width: 85px;
+    height: 85px;
+    background: linear-gradient(145deg, #0d4d4d, #d4af37, #0d4d4d);
+    border-radius: 50%;
+    padding: 5px;
+    z-index: 3;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.medal-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #0d4d4d;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.title-serif {
+    font-size: 60px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.of-appreciation {
+    letter-spacing: 5px;
+    font-size: 14px;
+    color: #d4af37;
+    margin-top: -10px;
+}
+
+.proudly {
+    font-size: 12px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.name-script {
+    font-family: 'Cursive', cursive;
+    font-size: 45px;
+    font-style: italic;
+    margin: 5px 0;
+}
+
+.ornament-line {
+    width: 60%;
+    height: 1px;
+    background: #d4af37;
+    margin: 10px auto;
+    position: relative;
+}
+
+.ornament-line::before, .ornament-line::after {
+    content: '●';
+    color: #d4af37;
+    position: absolute;
+    top: -6px;
+}
+.ornament-line::before { left: -5px; }
+.ornament-line::after { right: -5px; }
+
+.description-small {
+    font-size: 14px;
+    max-width: 70%;
+    line-height: 1.6;
+    margin: 15px auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Certificate Three */
+.cert-three {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    color: #4a5568;
+    font-family: 'Segoe UI', sans-serif;
+    z-index: 1;
+}
+
+.bg-layer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    clip-path: polygon(0 0, 45% 0, 25% 100%, 0% 100%);
+    z-index: -1;
+}
+
+.stripe {
+    position: absolute;
+    height: 150%;
+    width: 40px;
+    z-index: -1;
+    transform: rotate(25deg);
+}
+
+.stripe-1 { background: #d4af37; left: 20%; top: -20%; width: 15px; }
+.stripe-2 { background: rgba(255,255,255,0.1); left: 10%; top: -25%; width: 60px; }
+.stripe-3 { background: #d4af37; right: 5%; top: -10%; width: 10px; }
+.stripe-4 { 
+    background: #2d3748; 
+    right: -10%; 
+    top: -20%; 
+    width: 150px; 
+    transform: rotate(45deg); 
+}
+
+.main-title {
+    font-size: 45px;
+    color: #4a5568;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.sub-title {
+    color: #d4af37;
+    letter-spacing: 4px;
+    margin-top: -5px;
+}
+
+.name-gold {
+    font-family: 'Cursive', cursive;
+    color: #d4af37;
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.line-divider {
+    width: 100%;
+    height: 1px;
+    background: #cbd5e0;
+    margin-bottom: 20px;
+}
+
+.description-text {
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 90%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.footer-signatures {
+    display: flex;
+    gap: 100px;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.sig-line {
+    border-top: 1px solid #4a5568;
+    width: 120px;
+    font-size: 10px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.present-label {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Certificate Four */
+.cert-four {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    z-index: 1;
+}
+
+.wave-top {
+    position: absolute;
+    top: 0; width: 100%; height: 180px;
+    z-index: -1;
+}
+.purple-wave {
+    background: #1e0b50;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 80% 90%, 50% 70%, 20% 90%, 0 70%);
+}
+.orange-wave {
+    background: linear-gradient(to bottom, #ff9100, #ff6d00);
+    height: 140px;
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 85% 100%, 50% 80%, 15% 100%, 0 60%);
+    opacity: 0.9;
+}
+
+.header-bar {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+.header-bar h1 { font-size: 40px; margin: 0; letter-spacing: 3px; }
+.subtitle-badge {
+    background: #ff9100;
+    display: inline-block;
+    padding: 5px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.cert-four .cert-content {
+    margin-top: 18px;
+    padding: 20px;
+}
+.name-elegant {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 45px;
+    margin: 10px 0;
+    color: #1e0b50;
+}
+.orange-divider {
+    width: 60%;
+    height: 2px;
+    background: #ff9100;
+    margin: 0 auto 20px;
+}
+.desc-text {
+    font-size: 14px;
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.footer-sigs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 40px;
+    width: 100%;
+}
+.sig-item {
+    border-top: 1px solid #333;
+    width: 150px;
+    font-size: 12px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.proud-label {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Common Content Styling */
+.cert-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    z-index: 10;
+}
+
+.cert-one .cert-content {
+    padding: 20px;
+}
+
+.cert-two .cert-content {
+    padding: 40px;
+}
+
+.cert-three .cert-content {
+    padding-left: 35%;
+    text-align: left;
+}
+
+.cert-four .cert-content {
+    padding: 40px 20px;
+}
+
+/* Signature Styling */
+.signature-text {
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    min-height: 20px;
+}
+
+.label-text {
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+}
+
+.present-text {
+    font-size: 12px;
+    margin: 15px 0;
+}
+
+.description {
+    font-size: 14px;
+    max-width: 75%;
+    line-height: 1.6;
+    margin: 15px auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate</title>
+    <style>
+            <%- inlineCSS %>
+            /* jhdfjsdkjf */
+    </style>
+</head>
+<body>
+    <div id="certPreview">
+        <% if (templateId==='t1' ) { %>
+            <div class="certificate cert-one">
+                <div class="shape-top"></div>
+                <div class="shape-bottom"></div>
+                <div class="seal-container">
+                    <div class="ribbon-left"></div>
+                    <div class="ribbon-right"></div>
+                    <div class="medal"></div>
+                </div>
+
+                <div class="cert-content">
+                    <h1 class="title-script">Certificate</h1>
+                    <h3 class="subtitle"><%= orgName || "Of Appreciation" %></h3>
+                    <div class="divider"></div>
+                    <p class="present-text">This Certificate is proudly presented to:</p>
+                    <h2 class="name-display"><%= previewName || "Your Name Here" %></h2>
+                    <p class="description"><%= description || "Lorem ipsum dolor sit amet, consectetuer adipiscing elit..." %></p>
+
+                    <div class="cert-footer">
+                        <div class="sig-block">
+                            <div class="label-text"><%= new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></div>
+                            <div class="sig-line"></div>
+                            <div class="label-text">Date</div>
+                        </div>
+                        <div class="sig-block">
+                            <div class="signature-text"><%= ownerSignature || "" %></div>
+                            <div class="sig-line"></div>
+                            <div class="label-text">Signature</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <% } else if (templateId==='t2' ) { %>
+            <div class="certificate cert-two">
+                <div class="swoosh swoosh-top"></div>
+                <div class="swoosh swoosh-bottom"></div>
+                <div class="gold-frame"></div>
+                <div class="best-award-medal">
+                    <div class="medal-inner">BEST<span>AWARD</span></div>
+                </div>
+
+                <div class="cert-content">
+                    <h1 class="title-serif">Certificate</h1>
+                    <h4 class="of-appreciation"><%= orgName || "OF APPRECIATION" %></h4>
+                    <p class="proudly">PROUDLY PRESENTED TO</p>
+                    <h2 class="name-script"><%= previewName || "Name Surname" %></h2>
+                    <div class="ornament-line"></div>
+                    <p class="description-small"><%= description || "LOREM IPSUM DOLOR SIT AMET..." %></p>
+
+                    <div class="cert-footer">
+                        <div class="sig-block">
+                            <div class="label-text"><%= new Date().toLocaleDateString() %></div>
+                            <div class="sig-line"></div>
+                            <div class="label-text">Date</div>
+                        </div>
+                        <div class="sig-block">
+                            <div class="signature-text"><%= ownerSignature || "" %></div>
+                            <div class="sig-line"></div>
+                            <div class="label-text">Signature</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <% } else if (templateId==='t3' ) { %>
+            <div class="certificate cert-three">
+                <div class="bg-layer"></div>
+                <div class="stripe stripe-1"></div>
+                <div class="stripe stripe-2"></div>
+                <div class="stripe stripe-3"></div>
+                <div class="stripe stripe-4"></div>
+
+                <div class="cert-content">
+                    <div class="header-group">
+                        <h1 class="main-title">CERTIFICATE</h1>
+                        <h3 class="sub-title"><%= orgName || "OF APPRECIATION" %></h3>
+                    </div>
+                    <p class="present-label">THIS CERTIFICATE AS PROUDLY PRESENTED TO</p>
+                    <h2 class="name-gold"><%= previewName || "Name Surname" %></h2>
+                    <div class="line-divider"></div>
+                    <p class="description-text"><%= description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit..." %></p>
+
+                    <div class="footer-signatures">
+                        <div class="sig-line">
+                            <div class="label-text"><%= new Date().toLocaleDateString() %></div>
+                            <div class="line"></div>
+                            <div class="label-text">Date</div>
+                        </div>
+                        <div class="sig-line">
+                            <div class="signature-text"><%= ownerSignature || "" %></div>
+                            <div class="line"></div>
+                            <div class="label-text">Signature</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <% } else if (templateId==='t4' ) { %>
+            <div class="certificate cert-four">
+                <div class="wave-top purple-wave"></div>
+                <div class="wave-top orange-wave"></div>
+                <div class="header-bar">
+                    <h1>CERTIFICATE</h1>
+                    <div class="subtitle-badge"><%= orgName || "OF APPRECIATION" %></div>
+                </div>
+
+                <div class="cert-content">
+                    <p class="proud-label">PROUDLY PRESENTED TO</p>
+                    <h2 class="name-elegant"><%= previewName || "Name Surname" %></h2>
+                    <div class="orange-divider"></div>
+                    <p class="desc-text"><%= description || "Lorem ipsum dolor sit amet..." %></p>
+
+                    <div class="footer-sigs">
+                        <div class="sig-item">
+                            <div class="label-text"><%= new Date().toLocaleDateString() %></div>
+                            <div class="line"></div>
+                            <div class="label-text">Date</div>
+                        </div>
+                        <div class="sig-item">
+                            <div class="signature-text"><%= ownerSignature || "" %></div>
+                            <div class="line"></div>
+                            <div class="label-text">Signature</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

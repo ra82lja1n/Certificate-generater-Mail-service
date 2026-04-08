@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate Editor</title>
+
+    <% if (locals.isExporting) { %>
+        <style>
+            /* This is the CSS we read in the controller */
+            <%- inlineCSS -%>
+
+            /* PDF Specific Fixes */
+            .sidebar { display: none !important; }
+            .preview-area { padding: 0 !important; width: 1000px !important; height: 700px !important; }
+            #certPreview { transform: scale(1) !important; }
+            body { background: white !important; }
+        </style>
+    <% } else { %>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/formPage.css">
+    <% } %>
+
+
+    
+</head>
+
+
+
+<body class="editor-body">
+
+    <div class="editor-layout">
+        <aside class="sidebar">
+            <h2>Certificate Details</h2>
+            <form action="/generate-bulk" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label>Selected Template</label>
+                    <input type="text" name="templateId" value="<%= templateId %>" readonly class="readonly-input">
+                </div>
+
+                <div class="form-group">
+                    <label>Organization / Owner Name</label>
+                    <input type="text" name="orgName" id="orgInput" placeholder="e.g. Google Academy"
+                        oninput="updatePreview()">
+                </div>
+
+                <div class="form-group">
+                    <label>Description (Body Text)</label>
+                    <textarea name="description" id="descInput" rows="4" placeholder="For successful completion of..."
+                        oninput="updatePreview()"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Owner Signature</label>
+                    <input type="text" name="ownerSignature" id="ownerSigInput" placeholder="e.g. John Doe" oninput="updatePreview()">
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Recipient List (Excel only)</label>
+                    <div class="file-upload">
+                        <input type="file" name="excelFile" accept=".xlsx, .xls" required>
+                        <p class="file-hint">Upload .xlsx or .xls file containing names</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-btn">Generate Bulk Certificates</button>
+            </form>
+        </aside>
+
+        <main class="preview-area">
+            <div id="certPreview">
+
+    <% if (templateId==='t1' ) { %>
+        <div class="certificate cert-one small">
+            <div class="shape-top"></div>
+            <div class="shape-bottom"></div>
+            <div class="seal-container">
+                <div class="ribbon-left"></div>
+                <div class="ribbon-right"></div>
+                <div class="medal"></div>
+            </div>
+
+            <div class="cert-content">
+                <h1 class="title-script">Certificate</h1>
+                <h3 class="subtitle"><%= locals.orgName || "Of Appreciation" %></h3>
+                <div class="divider"></div>
+                <p class="present-text">This Certificate is proudly presented to:</p>
+                <h2 class="name-display"><%= locals.previewName || "Your Name Here" %></h2>
+                <p class="description"><%= locals.description || "Lorem ipsum dolor sit amet, consectetuer adipiscing elit..." %></p>
+
+                <div class="cert-footer">
+                    <div class="sig-block">
+                        <div class="label-text"><%= new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></div>
+                        <div class="sig-line"></div>
+                        <div class="label-text">Date</div>
+                    </div>
+                    <div class="sig-block">
+                        <div class="signature-text"><%= locals.ownerSignature || "" %></div>
+                        <div class="sig-line"></div>
+                        <div class="label-text">Signature</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <% } else if (templateId==='t2' ) { %>
+        <div class="certificate cert-two small">
+            <div class="swoosh swoosh-top"></div>
+            <div class="swoosh swoosh-bottom"></div>
+            <div class="gold-frame"></div>
+            <div class="best-award-medal">
+                <div class="medal-inner">BEST<span>AWARD</span></div>
+            </div>
+
+            <div class="cert-content">
+                <h1 class="title-serif">Certificate</h1>
+                <h4 class="of-appreciation"><%= locals.orgName || "OF APPRECIATION" %></h4>
+                <p class="proudly">PROUDLY PRESENTED TO</p>
+                <h2 class="name-script"><%= locals.previewName || "Name Surname" %></h2>
+                <div class="ornament-line"></div>
+                <p class="description-small"><%= locals.description || "LOREM IPSUM DOLOR SIT AMET..." %></p>
+
+                <div class="cert-footer">
+                    <div class="sig-block">
+                        <div class="label-text"><%= new Date().toLocaleDateString() %></div>
+                        <div class="sig-line"></div>
+                        <div class="label-text">Date</div>
+                    </div>
+                    <div class="sig-block">
+                        <div class="signature-text"><%= locals.ownerSignature || "" %></div>
+                        <div class="sig-line"></div>
+                        <div class="label-text">Signature</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <% } else if (templateId==='t3' ) { %>
+        <div class="certificate cert-three small">
+            <div class="bg-layer"></div>
+            <div class="stripe stripe-1"></div>
+            <div class="stripe stripe-2"></div>
+            <div class="stripe stripe-3"></div>
+            <div class="stripe stripe-4"></div>
+
+            <div class="cert-content">
+                <div class="header-group">
+                    <h1 class="main-title">CERTIFICATE</h1>
+                    <h3 class="sub-title"><%= locals.orgName || "OF APPRECIATION" %></h3>
+                </div>
+                <p class="present-label">THIS CERTIFICATE AS PROUDLY PRESENTED TO</p>
+                <h2 class="name-gold"><%= locals.previewName || "Name Surname" %></h2>
+                <div class="line-divider"></div>
+                <p class="description-text"><%= locals.description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit..." %></p>
+
+                <div class="footer-signatures">
+                    <div class="sig-line">
+                        <div class="label-text"><%= new Date().toLocaleDateString() %></div>
+                        <div class="line"></div>
+                        <div class="label-text">Date</div>
+                    </div>
+                    <div class="sig-line">
+                        <div class="signature-text"><%= locals.ownerSignature || "" %></div>
+                        <div class="line"></div>
+                        <div class="label-text">Signature</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <% } else if (templateId==='t4' ) { %>
+        <div class="certificate cert-four small">
+            <div class="wave-top purple-wave"></div>
+            <div class="wave-top orange-wave"></div>
+            <div class="header-bar">
+                <h1>CERTIFICATE</h1>
+                <div class="subtitle-badge"><%= locals.orgName || "OF APPRECIATION" %></div>
+            </div>
+
+            <div class="cert-content">
+                <p class="proud-label">PROUDLY PRESENTED TO</p>
+                <h2 class="name-elegant"><%= locals.previewName || "Name Surname" %></h2>
+                <div class="orange-divider"></div>
+                <p class="desc-text"><%= locals.description || "Lorem ipsum dolor sit amet..." %></p>
+
+                <div class="footer-sigs">
+                    <div class="sig-item">
+                        <div class="label-text"><%= new Date().toLocaleDateString() %></div>
+                        <div class="line"></div>
+                        <div class="label-text">Date</div>
+                    </div>
+                    <div class="sig-item">
+                        <div class="signature-text"><%= locals.ownerSignature || "" %></div>
+                        <div class="line"></div>
+                        <div class="label-text">Signature</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+</div>
+        </main>
+    </div>
+
+    
+
+    <script>
+        
+        function updatePreview() {
+            const org = document.getElementById('orgInput').value;
+            const desc = document.getElementById('descInput').value;
+            const ownerSig = document.getElementById('ownerSigInput').value;
+
+            // Update Org Name in the certificate (Targeting specific classes from your CSS)
+            const orgDisplay = document.querySelector('.subtitle, .of-appreciation, .sub-title, .subtitle-badge');
+            if (orgDisplay && org) orgDisplay.innerText = org;
+
+            // Update Description in the certificate
+            const descDisplay = document.querySelector('.description, .description-small, .description-text, .desc-text');
+            if (descDisplay && desc) descDisplay.innerText = desc;
+
+            // Update Date in all templates
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.querySelectorAll('[id^="dateDisplay"]').forEach(el => {
+                el.innerText = dateStr;
+            });
+
+            // Update Signature in all templates
+            document.querySelectorAll('[id^="sigDisplay"]').forEach(el => {
+                el.innerText = ownerSig || 'Signature';
+            });
+        }
+
+        // Call updatePreview on page load
+        window.addEventListener('load', updatePreview);
+
+
+        function autoScaleCert() {
+            const previewArea = document.querySelector('.preview-area');
+            const cert = document.querySelector('.certificate');
+
+            if (!cert) return;
+
+            const padding = 80; // Total padding around the cert
+            const availableWidth = previewArea.clientWidth - padding;
+            const availableHeight = previewArea.clientHeight - padding;
+
+            // Calculate the scale ratio
+            const scale = Math.min(
+                availableWidth / 1000,
+                availableHeight / 700
+            );
+
+            // Apply the scale to the #certPreview container
+            document.getElementById('certPreview').style.transform = `scale(${scale})`;
+        }
+
+        // Run on load and whenever window is resized
+        window.addEventListener('load', autoScaleCert);
+        window.addEventListener('resize', autoScaleCert);
+    </script>
+
+</body>
+
+</html>
